@@ -6,22 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tbl_rooms")
+@Table(name = "tbl_guest")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Room {
+public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int roomNumber;
-    private int numberOfGuests;
-    private int price;
-    //facilities
-    private boolean kitchenette;
-    private boolean terrace;
-    private boolean airConditioning;
-
+    private String name;
+    private String surname;
+    private String birthDate;
+    private String city;
+    private String phone;
+    private String email;
 
 }

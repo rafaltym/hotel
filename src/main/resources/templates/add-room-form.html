@@ -20,6 +20,12 @@
         <input type="number" th:field="*{numberOfGuests}" placeholder="Enter number of guests" class="form-control col-4 mb-4"/>
         <span>Price for night </span>
         <input type="number" th:field="*{price}" class="form-control col-4 mb-4"/>
+        <input id="kitchenette" type="checkbox" th:field="*{kitchenette}" class="col-1 mb-4"/>
+        <label for="kitchenette">kitchenette </label><br>
+        <input id="terrace" type="checkbox" th:field="*{terrace}" class="col-1 mb-4"/>
+        <label for="terrace">terrace</label><br>
+        <input id="airConditioning" type="checkbox" th:field="*{airConditioning}" class="col-1 mb-4"/>
+        <label for="airConditioning">air conditioning</label><br>
         <button class="btn btn-primary" type="submit">Save</button>
         <input type="hidden" th:field="*{id}"/>
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import pl.rafalprogramuje.hotel.entity.Guest;
 import pl.rafalprogramuje.hotel.entity.Room;
 import pl.rafalprogramuje.hotel.repository.RoomRepository;
 
@@ -20,8 +21,8 @@ public class RoomController {
     @GetMapping({"/showRooms", "/", "/list"})
     public ModelAndView showRooms() {
         ModelAndView mav = new ModelAndView("list-rooms");
-        List<Room> list = repo.findAll();
-        mav.addObject("rooms", list);
+        List<Room> rooms = repo.findAll();
+        mav.addObject("rooms", rooms);
         return mav;
     }
 
@@ -41,7 +42,7 @@ public class RoomController {
 
     }
 
-    @GetMapping("/showUpdateForm")
+    @GetMapping("/showRoomUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long roomId) {
         ModelAndView mav = new ModelAndView("add-room-form");
         Room room = repo.findById(roomId).get();
@@ -55,6 +56,5 @@ public class RoomController {
         repo.deleteById(roomId);
         return "redirect:/list";
     }
-
 
 }
