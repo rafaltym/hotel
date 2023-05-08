@@ -38,8 +38,6 @@ public class RoomController {
     public String saveRoom(@ModelAttribute Room room) {
         repo.save(room);
         return "redirect:/list";
-
-
     }
 
     @GetMapping("/showRoomUpdateForm")

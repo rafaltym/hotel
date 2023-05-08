@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Room</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add guest</h2>
+    <hr/>
+    <form th:action="@{/saveGuest}" th:object="${guest}" method="POST">
+        <span>Name </span>
+        <input type="text" th:field="*{name}" placeholder="Enter name" class="form-control col-4 mb-4"/>
+        <span>Surname </span>
+        <input type="text" th:field="*{surname}" placeholder="Enter surname" class="form-control col-4 mb-4"/>
+        <span>Date of birth </span>
+        <input type="date" th:field="*{birthDate}" class="form-control col-4 mb-4"/>
+        <span>City </span>
+        <input type="text" th:field="*{city}" class="form-control col-4 mb-4"/>
+        <span>Phone </span>
+        <input type="tel" th:field="*{phone}" pattern="[0-9]{9}" class="form-control col-4 mb-4"/>
+        <span>Email </span>
+        <input type="email" th:field="*{email}" class="form-control col-4 mb-4"/>
+
+        <button class="btn btn-primary" type="submit">Save</button>
+        <input type="hidden" th:field="*{id}"/>
+
+
+
+    </form>
+    <hr/>
+    <a th:href="@{/showGuests}">Back to list</a>
+
+
+</div>
+
+
+
+
+</body>
+
+
+
+
+</html>

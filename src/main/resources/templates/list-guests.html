@@ -35,10 +35,10 @@
                 <tr th:each="guest: ${guests}">
                     <td th:text="${guest.name}" ></td>
                     <td th:text="${guest.surname}"></td>
-                    <td th:text="${guest.birthDate}" ></td>
+                    <td th:text="${#dates.format(guest.birthDate, 'dd/MM/yyyy')}" ></td>
                     <td th:text="${guest.city}" ></td>
                     <td th:text="${guest.phone}" ></td>
-                    <td th:text="${email}" ></td>
+                    <td th:text="${guest.email}" ></td>
                     <td>
                         <a th:href="@{/showGuestUpdateForm(guestId=${guest.id})}" class="btn btn-info">Update</a>
                         <a th:href="@{/deleteGuest(guestId=${guest.id})}" class="btn btn-danger ml-2">Delete</a>
