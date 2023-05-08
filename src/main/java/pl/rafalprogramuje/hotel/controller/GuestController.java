@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.rafalprogramuje.hotel.entity.Guest;
 import pl.rafalprogramuje.hotel.repository.GuestRepository;
@@ -40,6 +41,22 @@ public class GuestController {
         repo.save(guest);
         return "redirect:/showGuests";
     }
+
+    @GetMapping("/showGuestUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long guestId){
+        ModelAndView mav = new ModelAndView("add-guest-form");
+        Guest guest = repo.findById(guestId).get();
+        mav.addObject("guest", guest);
+        return mav;
+    }
+
+    @GetMapping("/deleteGuest")
+    public String deleteGuest(@RequestParam Long guestId) {
+        repo.deleteById(guestId);
+        return "redirect:/showGuests";
+    }
+
+
 
 
 }
