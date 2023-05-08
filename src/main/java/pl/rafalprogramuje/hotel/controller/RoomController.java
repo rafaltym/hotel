@@ -50,5 +50,11 @@ public class RoomController {
 
     }
 
+    @GetMapping("/deleteRoom")
+    public String deleteRoom(@RequestParam Long roomId) {
+        repo.deleteById(roomId);
+        return "redirect:/list";
+    }
+
 
 }
