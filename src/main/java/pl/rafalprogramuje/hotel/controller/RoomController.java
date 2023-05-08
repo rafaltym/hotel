@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.rafalprogramuje.hotel.entity.Room;
 import pl.rafalprogramuje.hotel.repository.RoomRepository;
@@ -37,6 +38,15 @@ public class RoomController {
         repo.save(room);
         return "redirect:/list";
 
+
+    }
+
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long roomId) {
+        ModelAndView mav = new ModelAndView("add-room-form");
+        Room room = repo.findById(roomId).get();
+        mav.addObject("room", room);
+        return mav;
 
     }
 

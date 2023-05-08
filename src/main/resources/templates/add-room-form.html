@@ -21,10 +21,13 @@
         <span>Price for night </span>
         <input type="number" th:field="*{price}" class="form-control col-4 mb-4"/>
         <button class="btn btn-primary" type="submit">Save</button>
+        <input type="hidden" th:field="*{id}"/>
 
 
 
     </form>
+    <hr/>
+    <a th:href="@{/list}">Back to list</a>
 
 
 </div>
