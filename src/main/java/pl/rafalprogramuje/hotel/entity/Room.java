@@ -28,4 +28,9 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     private Set<Booking> bookingSet = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return roomNumber +"";
+    }
 }

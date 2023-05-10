@@ -33,11 +33,24 @@ public class Booking {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_id", referencedColumnName = "id")
     private Guest guest;
+    @Transient
+    private Long guestId;
+    @Transient
+    private Long roomId;
+
 
     private boolean paid;
 
     public Room getRoom() {
         return room;
+    }
+
+    public void assignGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+    public void assignRoom(Room room) {
+        this.room = room;
     }
 
 }

@@ -32,6 +32,9 @@ public class Guest {
     @OneToMany(mappedBy = "guest")
     private Set<Booking> bookingSet = new HashSet<>();
 
-
-
+    @Override
+    public String toString() {
+        return  name +" "+
+                surname;
+    }
 }
