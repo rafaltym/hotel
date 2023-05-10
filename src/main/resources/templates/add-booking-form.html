@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Booking</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add booking</h2>
+    <hr/>
+    <form th:action="@{/saveBooking}" th:object="${booking}" method="POST">
+        <span>Start date </span>
+        <input type="date" th:field="*{startDate}" class="form-control col-4 mb-4"/>
+        <span>End date </span>
+        <input type="date" th:field="*{endDate}" class="form-control col-4 mb-4"/>
+
+        <input id="paid" type="checkbox" th:field="*{paid}" class="col-1 mb-4"/>
+        <label for="paid">paid </label><br>
+
+        <button class="btn btn-primary" type="submit">Save</button>
+        <input type="hidden" th:field="*{id}"/>
+
+
+
+    </form>
+    <hr/>
+    <a th:href="@{/showBookings}">Back to list</a>
+
+
+</div>
+
+
+
+
+</body>
+
+
+
+
+</html>

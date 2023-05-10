@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.rafalprogramuje.hotel.entity.Guest;
 import pl.rafalprogramuje.hotel.repository.GuestRepository;
-import pl.rafalprogramuje.hotel.repository.RoomRepository;
 
 import java.util.List;
 

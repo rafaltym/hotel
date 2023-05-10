@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tbl_rooms")
 @Data
@@ -23,5 +26,6 @@ public class Room {
     private boolean terrace;
     private boolean airConditioning;
 
-
+    @OneToMany(mappedBy = "room")
+    private Set<Booking> bookingSet = new HashSet<>();
 }
