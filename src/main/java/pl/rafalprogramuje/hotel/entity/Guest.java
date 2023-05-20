@@ -29,12 +29,14 @@ public class Guest {
     private String phone;
     private String email;
 
+
     @OneToMany(mappedBy = "guest")
     private Set<Booking> bookingSet = new HashSet<>();
 
     @Override
     public String toString() {
-        return  name +" "+
-                surname;
+        return  name + " " +
+                surname + "  " +
+                birthDate.toString().substring(0,10);
     }
 }

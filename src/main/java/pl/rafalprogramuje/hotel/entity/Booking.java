@@ -5,12 +5,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.rafalprogramuje.hotel.repository.GuestRepository;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tbl_bookings")
@@ -33,6 +32,18 @@ public class Booking {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_id", referencedColumnName = "id")
     private Guest guest;
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setGuest(Guest guest) {
+                this.guest = guest;
+
+
+
+    }
+
     @Transient
     private Long guestId;
     @Transient
@@ -45,12 +56,6 @@ public class Booking {
         return room;
     }
 
-    public void assignGuest(Guest guest) {
-        this.guest = guest;
-    }
 
-    public void assignRoom(Room room) {
-        this.room = room;
-    }
 
 }

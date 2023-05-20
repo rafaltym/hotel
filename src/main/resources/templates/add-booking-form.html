@@ -18,12 +18,26 @@
         <input type="date" th:field="*{startDate}" class="form-control col-4 mb-4"/>
         <span>End date </span>
         <input type="date" th:field="*{endDate}" class="form-control col-4 mb-4"/>
-        <span>Guest ID </span>
-        <input type="number" th:field="*{guestId}" class="form-control col-4 mb-4"/>
-        <span>Room ID </span>
-        <input type="number" th:field="*{roomId}"  class="form-control col-4 mb-4"/>
+
+        <span style="margin-right:10px">Guest </span>
+        <select th:field="*{guestId}">
+            <option th:each="guest : ${guestList}"
+                    th:value="${guest.id}"
+                    th:utext="${guest}"></option>
+
+        </select>
+        <span style="margin-left:20px">No guest on the list? </span><a th:href="@{/addGuest}">Add Guest</a>
+        <br>
+        <span style="margin-right:10px">Room </span>
+        <select th:field="*{roomId}">
+            <option th:each="room : ${roomList}"
+                    th:value="${room.id}"
+                    th:text="${room}"></option>
+        </select>
+        <span style="margin-left:20px">No room on the list? </span><a th:href="@{/addRoom}">Add Room</a><br>
+        <label for="paid">paid </label>
         <input id="paid" type="checkbox" th:field="*{paid}" class="col-1 mb-4"/>
-        <label for="paid">paid </label><br>
+        <br>
 
         <button class="btn btn-primary" type="submit">Save</button>
         <input type="hidden" th:field="*{id}"/>

@@ -31,6 +31,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return roomNumber +"";
+        return roomNumber+ "";
     }
 }
