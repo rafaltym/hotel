@@ -5,11 +5,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.rafalprogramuje.hotel.repository.GuestRepository;
 
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tbl_bookings")
@@ -22,40 +20,37 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date startDate;
+    private Date startDate = new Date(System.currentTimeMillis());
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date endDate;
+    private Date endDate = new Date(System.currentTimeMillis()+86400000);
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     private Room room;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "guest_id", referencedColumnName = "id")
     private Guest guest;
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public void setGuest(Guest guest) {
-                this.guest = guest;
-
-
-
-    }
 
     @Transient
     private Long guestId;
     @Transient
     private Long roomId;
 
-
     private boolean paid;
+    private int price;
 
-    public Room getRoom() {
-        return room;
+
+    //Total price for booking based on number of booking days
+    public void setPrice() {
+        int roomPrice = room.getPrice();
+        int numberOfDays = (int)((endDate.getTime() - startDate.getTime())/86400000);
+        if(numberOfDays == 0) {
+            numberOfDays = 1;
+        } else if (numberOfDays < 0) {
+            numberOfDays = 0;
+        }
+        this.price = numberOfDays * roomPrice;
     }
-
-
 
 }

@@ -15,15 +15,15 @@
     <hr/>
     <form th:action="@{/saveBooking}" th:object="${booking}" method="POST">
         <span>Start date </span>
-        <input type="date" th:field="*{startDate}" class="form-control col-4 mb-4"/>
+        <input type="date" th:field="*{startDate}" th:value="${{startDate}}"  class="form-control col-4 mb-4"/>
         <span>End date </span>
-        <input type="date" th:field="*{endDate}" class="form-control col-4 mb-4"/>
+        <input type="date" th:field="*{endDate}" th:value="${{endDate}}" class="form-control col-4 mb-4"/>
 
         <span style="margin-right:10px">Guest </span>
         <select th:field="*{guestId}">
             <option th:each="guest : ${guestList}"
                     th:value="${guest.id}"
-                    th:utext="${guest}"></option>
+                    th:text="${guest}"></option>
 
         </select>
         <span style="margin-left:20px">No guest on the list? </span><a th:href="@{/addGuest}">Add Guest</a>

@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class Guest {
     private String email;
 
 
-    @OneToMany(mappedBy = "guest")
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.PERSIST)
     private Set<Booking> bookingSet = new HashSet<>();
 
     @Override

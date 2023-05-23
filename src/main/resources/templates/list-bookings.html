@@ -23,11 +23,12 @@
                 <thead>
 
                         <tr>
-                            <th>Booking ID</th>
+                            <th>ID</th>
                             <th>Star Date</th>
                             <th>End Date</th>
                             <th>Room number</th>
                             <th>Guest</th>
+                            <th>Total price[PLN]</th>
                             <th>Paid</th>
                             <th>Actions</th>
                         </tr>
@@ -40,6 +41,7 @@
                     <td th:text="${#dates.format(booking.endDate, 'dd/MM/yyyy')}" ></td>
                     <td th:text="${booking.room}" ></td>
                     <td th:text="${booking.guest}" ></td>
+                    <td th:text="${booking.price}" ></td>
                     <td th:text="${booking.paid}" ></td>
                     <td>
                         <a th:href="@{/showBookingUpdateForm(bookingId=${booking.id})}" class="btn btn-info">Update</a>

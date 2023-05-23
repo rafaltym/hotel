@@ -26,7 +26,7 @@ public class Room {
     private boolean terrace;
     private boolean airConditioning;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", cascade = CascadeType.PERSIST)
     private Set<Booking> bookingSet = new HashSet<>();
 
     @Override
